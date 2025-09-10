@@ -792,13 +792,14 @@ class _MaterialVideoControlsState extends State<_MaterialVideoControls> {
       try {
         VolumeController.instance.showSystemUI = false;
         _volumeValue = await VolumeController.instance.getVolume();
-        VolumeController.instance.listener((value) {
-          if (mounted && !_volumeInterceptEventStream) {
+        VolumeController.instance.addListener((volume) {
+  if (mounted && !_volumeInterceptEventStream) {
             setState(() {
               _volumeValue = value;
             });
           }
-        });
+}, fetchInitialVolume: true);
+      
       } catch (_) {}
     });
     // --------------------------------------------------
