@@ -791,7 +791,7 @@ class _MaterialVideoControlsState extends State<_MaterialVideoControls> {
     Future.microtask(() async {
       try {
         VolumeController.instance.showSystemUI = false;
-        _volumeValue = await VolumeController.instance..getVolume();
+        _volumeValue = await VolumeController.instance.getVolume();
         VolumeController.instance.listener((value) {
           if (mounted && !_volumeInterceptEventStream) {
             setState(() {
